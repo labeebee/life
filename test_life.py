@@ -13,4 +13,4 @@ def test_is_alive ():
 
     ip = [[0,0,0], [0,1,1], [1,0,0]]
     assert grid.is_alive(1, 1) == True
-
+    assert grid.is_alive(0, 0) == False
