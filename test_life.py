@@ -15,11 +15,11 @@ def test_is_alive ():
     assert grid.is_alive(1, 1) == True
     assert grid.is_alive(0, 0) == False
 
-def test_num_neighbours ():
+def test_num_neighbours():
     """This tests the number of neighbours function for a given position"""
     ip = [[0,0,0], [0,1,1], [1,0,0]]
     """For the cell in the middle"""
-    assert num_neighbours(1, 1) == 2
+    assert grid.num_neighbours(1, 1) == 2
    # """for the 
    # assert num_neighbours(0, 0) == 1
     
