@@ -21,5 +21,6 @@ def num_neighbours(x,y):
                 ncount += 1
     return ncount
 
-            
-        
+def kill_cell(x, y):
+     life_grid[x][y] = 0
+     
