@@ -30,3 +30,5 @@ def birth_cell(x,y):
 def size():
     return len(life_grid)
 
+def grid_as_array():
+    return life_grid
