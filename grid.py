@@ -27,3 +27,6 @@ def kill_cell(x, y):
 def birth_cell(x,y):
     life_grid[x][y] = 1
 
+def size():
+    return len(life_grid)
+
