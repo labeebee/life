@@ -20,6 +20,14 @@ def test_num_neighbours():
     ip = [[0,0,0], [0,1,1], [1,0,0]]
     """For the cell in the middle"""
     assert grid.num_neighbours(1, 1) == 2
-   # """for the 
-   # assert num_neighbours(0, 0) == 1
+    """for the left edge"""
+    assert grid.num_neighbours(1, 0) == 2
+    """for the right edge"""
+    assert grid.num_neighbours(1, 2) == 1
+    """for the top edge"""
+    assert grid.num_neighbours(0, 1) == 2
+    """for the bottom edge"""
+    assert grid.num_neighbours(2, 1) == 3
+    
+    
     

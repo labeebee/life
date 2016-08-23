@@ -13,9 +13,9 @@ def num_neighbours(x,y):
     ncount = 0
     for xn in [x-1, x, x+1]:
         for yn in [y-1, y, y+1]:
-            #if xn < 0 or yn < 0 or xn >= len(life_grid) or yn >= len(life_grid):
-             #   pass
-            if xn == x and yn == y:
+            if xn < 0 or yn < 0 or xn >= len(life_grid) or yn >= len(life_grid):
+                pass
+            elif xn == x and yn == y:
                 pass
             elif (is_alive(xn,yn) == True):
                 ncount += 1
