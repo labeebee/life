@@ -39,4 +39,7 @@ def test_num_neighbours():
     
     
     
-    
+def test_kill_cell():
+    ip = [[0,0,0], [0,1,1], [1,0,0]]
+    grid.kill_cell(1, 1)
+    assert not grid.is_alive(1, 1)
