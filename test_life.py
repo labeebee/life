@@ -54,4 +54,8 @@ def test_birth_cell():
 def test_size():
     assert grid.size() == 3
 
-
+def test_grid_as_array():
+    ip = [[0,0,0], [0,1,1], [1,0,0]]
+    assert grid.grid_as_array() == ip
+    
+    
