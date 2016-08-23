@@ -18,7 +18,7 @@ def test_is_alive ():
 def test_num_neighbours():
     """This tests the number of neighbours function for a given position"""
     ip = [[0,0,0], [0,1,1], [1,0,0]]
-    """For the cell in the middle"""
+    """for the cell in the middle"""
     assert grid.num_neighbours(1, 1) == 2
     """for the left edge"""
     assert grid.num_neighbours(1, 0) == 2
@@ -28,6 +28,15 @@ def test_num_neighbours():
     assert grid.num_neighbours(0, 1) == 2
     """for the bottom edge"""
     assert grid.num_neighbours(2, 1) == 3
+    """for the top left corner"""
+    assert grid.num_neighbours(0, 0) == 1
+    """for the top right corner"""
+    assert grid.num_neighbours(0, 2) == 2
+    """for the bottom left corner"""
+    assert grid.num_neighbours(2, 0) == 1
+    """for the bottom right corner"""
+    assert grid.num_neighbours(2, 2) == 2
+    
     
     
     
