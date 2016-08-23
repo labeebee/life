@@ -43,3 +43,11 @@ def test_kill_cell():
     ip = [[0,0,0], [0,1,1], [1,0,0]]
     grid.kill_cell(1, 1)
     assert grid.is_alive(1, 1) == False
+    grid.kill_cell(2, 0)
+    assert grid.is_alive(2, 0) == False
+
+def test_birth_cell():
+    ip = [[0,0,0], [0,1,1], [1,0,0]]
+    grid.birth_cell(0, 0)
+    assert grid.is_live(0, 0) == True
+    
