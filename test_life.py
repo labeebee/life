@@ -1,5 +1,7 @@
 import grid
 
+#Layer 0
+
 def test_create_grid():
     """Makes sure that the input is stored inside the grid module as 
 life_grid"""
@@ -47,6 +49,7 @@ def test_kill_cell():
     grid.kill_cell(2, 0)
     assert grid.is_alive(2, 0) == False
 
+
 def test_birth_cell():
     """tests if the function gives birth to a live cell at a given position"""
     ip = [[0,0,0], [0,1,1], [1,0,0]]
@@ -63,3 +66,12 @@ def test_grid_as_array():
     assert len(grid.grid_as_array()) == len(ip)
     
     
+#Layer 1
+
+def test_apply_rules():
+    ip = [[0,0,0], [0,1,1], [1,0,0]]
+    grid.apply_rules()
+    assert grid.is_alive(2, 1) == True
+    assert grid.is_alive(1, 2) == False
+    
+        
