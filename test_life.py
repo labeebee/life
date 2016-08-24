@@ -70,7 +70,10 @@ def test_grid_as_array():
 
 def test_apply_rules():
     ip = [[0,0,0], [0,1,1], [1,0,0]]
+    print (ip)
+    print (grid.life_grid)
     grid.apply_rules()
+    print (grid.life_grid)
     assert grid.is_alive(2, 1) == True
     assert grid.is_alive(1, 2) == False
     
