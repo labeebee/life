@@ -39,20 +39,30 @@ class Grid:
 def apply_rules(A):
     B = Grid()
     B.create_grid(A.life_grid)
-    for x in range(0, A.size()):
-        for y in range(0, A.size()):
-            if A.is_alive(x, y) and A.num_neighbours(x, y) < 2:
+    print(B.life_grid)
+    #since we are not actually accessing the values but the indices, I am merely iterating using the position indices and not the grid as such.
+    for x in range(0, A.size()): # x would vary from 0 to A.size() - 1
+        for y in range(0, A.size()): # y would vary from 0 to A.size() - 1 
+            print (x,y)
+            if not A.is_alive(x,y) and A.num_neighbours(x,y) == 3:
+                print ("what is happening here? {}{} when num_nei = {}".format(x,y, A.num_neighbours(x,y)))
+                B.birth_cell(x,y)
+            elif A.is_alive(x, y) and A.num_neighbours(x, y) < 2:
                 B.kill_cell(x, y)
-                break
-            elif A.is_alive(x, y) and A.num_neighbours(x, y) == (2, 3):
-                pass
+            #elif A.is_alive(x, y) and A.num_neighbours(x, y) == (2, 3):
+               # pass
             elif A.is_alive(x, y) and A.num_neighbours(x, y) > 3:
                 B.kill_cell(x, y)
-                break
-            elif not A.is_alive(x, y) and A.num_neighbours(x, y) == 3:
-                B.birth_cell(x, y)
-                break
+            else:
+                pass
+
+            
+            #if not A.is_alive(x, y) and A.num_neighbours(x, y) == 3:
+                #print ("This is {}{}".format(x, y))
+                #print (A.is_alive(x, y))
+                #print (A.num_neighbours(x, y))
+                #B.birth_cell(x, y)
+                #break
     A.life_grid = B.life_grid
     return A.life_grid
-
 
