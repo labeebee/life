@@ -1,9 +1,12 @@
+import copy
+
+
 class Grid:
     life_grid = None
 
     def create_grid(self, ip):
         global life_grid
-        self.life_grid = ip
+        self.life_grid = copy.deepcopy(ip)
 
     def is_alive(self, x, y):
         global life_grid
@@ -41,6 +44,9 @@ def apply_rules(A):
     B = Grid()
     B.create_grid(A.life_grid)
     print(B.life_grid)
+
+    # A.life_grid  and  B.life_grid  are pointing to the same list!
+
     # since we are not actually accessing the values but the indices, I am
     # merely iterating using the position indices and not the grid as such.
     for x in range(0, A.size()):  # x would vary from 0 to A.size() - 1
