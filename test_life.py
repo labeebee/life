@@ -2,37 +2,34 @@ import grid
 
 
 def test_create_grid():
-    A = grid.Grid()
     ip = [
         [0, 0, 0],
         [0, 1, 1],
         [1, 0, 0]
     ]
-    A.create_grid(ip)
+    A = grid.Grid(ip)
     assert A.life_grid == ip
 
 
 def test_is_alive():
-    A = grid.Grid()
     ip = [
         [0, 0, 0],
         [0, 1, 1],
         [1, 0, 0]
     ]
-    A.create_grid(ip)
+    A = grid.Grid(ip)
     assert A.is_alive(1, 1)
     assert not A.is_alive(0, 0)
     assert not A.is_alive(2, 1)
 
 
 def test_num_neighbours():
-    A = grid.Grid()
     ip = [
         [0, 0, 0],
         [1, 1, 1],
         [1, 0, 0]
     ]
-    A.create_grid(ip)
+    A = grid.Grid(ip)
     # For the cell in the middle
     assert A.num_neighbours(1, 1) == 3
     """for the left edge"""
@@ -55,13 +52,12 @@ def test_num_neighbours():
 
 
 def test_kill_cell():
-    A = grid.Grid()
     ip = [
         [0, 0, 0],
         [0, 1, 1],
         [1, 0, 0]
     ]
-    A.create_grid(ip)
+    A = grid.Grid(ip)
     A.kill_cell(1, 1)
     assert not A.is_alive(1, 1)
     A.kill_cell(2, 0)
@@ -69,13 +65,12 @@ def test_kill_cell():
 
 
 def test_birth_cell():
-    A = grid.Grid()
     ip = [
         [0, 0, 0],
         [0, 1, 1],
         [1, 0, 0]
     ]
-    A.create_grid(ip)
+    A = grid.Grid(ip)
     A.birth_cell(0, 0)
     assert A.is_alive(0, 0)
     A.birth_cell(0, 2)
@@ -83,39 +78,36 @@ def test_birth_cell():
 
 
 def test_size():
-    A = grid.Grid()
     ip = [
         [0, 0, 0],
         [0, 1, 1],
         [1, 0, 0]
     ]
-    A.create_grid(ip)
+    A = grid.Grid(ip)
     assert A.size() == 3
 
 
 def test_grid_as_array():
-    A = grid.Grid()
     ip = [
         [0, 0, 0],
         [0, 1, 1],
         [1, 0, 0]
     ]
-    A.create_grid(ip)
+    A = grid.Grid(ip)
     assert len(A.grid_as_array()) == len(ip)
 
 
 def test_apply_rules():
-    A = grid.Grid()
     ip = [
         [0, 0, 0],
         [1, 1, 1],
         [1, 0, 0]
     ]
-    A.create_grid(ip)
+    A = grid.Grid(ip)
     print(A.life_grid)
     print("the number of neighbours is {}".format(A.num_neighbours(2, 1)))
     # assert A.is_alive (2, 1) == False
-    print(grid.apply_rules(A))
+    print(A.apply_rules())
     # print(A.life_grid[2][1])
     # print(A.life_grid[1][2])
     assert A.is_alive(0, 1)

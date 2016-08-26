@@ -2,14 +2,10 @@ import copy
 
 
 class Grid:
-    life_grid = None
-
-    def create_grid(self, ip):
-        global life_grid
-        self.life_grid = copy.deepcopy(ip)
+    def __init__(self, grid):
+        self.life_grid = copy.deepcopy(grid)
 
     def is_alive(self, x, y):
-        global life_grid
         return self.life_grid[x][y] == 1
 
     def num_neighbours(self, x, y):
@@ -38,38 +34,24 @@ class Grid:
     def grid_as_array(self):
         return self.life_grid
 
+    def apply_rules(self):
+        curr_grid = Grid(self.life_grid)
+        print(curr_grid.life_grid)
 
-# Layer 1
-def apply_rules(A):
-    B = Grid()
-    B.create_grid(A.life_grid)
-    print(B.life_grid)
-
-    # A.life_grid  and  B.life_grid  are pointing to the same list!
-
-    # since we are not actually accessing the values but the indices, I am
-    # merely iterating using the position indices and not the grid as such.
-    for x in range(0, A.size()):  # x would vary from 0 to A.size() - 1
-        for y in range(0, A.size()):  # y would vary from 0 to A.size() - 1
-            print(x, y)
-            if not A.is_alive(x, y) and A.num_neighbours(x, y) == 3:
-                print("what is happening here? {}{} when num_nei = {}".format(
-                    x, y, A.num_neighbours(x, y)))
-                B.birth_cell(x, y)
-            elif A.is_alive(x, y) and A.num_neighbours(x, y) < 2:
-                B.kill_cell(x, y)
-            # elif A.is_alive(x, y) and A.num_neighbours(x, y) == (2, 3):
-            #     pass
-            elif A.is_alive(x, y) and A.num_neighbours(x, y) > 3:
-                B.kill_cell(x, y)
-            else:
-                pass
-
-            # if not A.is_alive(x, y) and A.num_neighbours(x, y) == 3:
-            #     print("This is {}{}".format(x, y))
-            #     print(A.is_alive(x, y))
-            #     print(A.num_neighbours(x, y))
-            #     B.birth_cell(x, y)
-            #     break
-    A.life_grid = B.life_grid
-    return A.life_grid
+        # since we are not actually accessing the values but the indices, I am
+        # merely iterating using the position indices and not the grid as such.
+        for x in range(0, curr_grid.size()):  # x would vary from 0 to A.size() - 1
+            for y in range(0, curr_grid.size()):  # y would vary from 0 to A.size() - 1
+                print(x, y)
+                if not curr_grid.is_alive(x, y) and curr_grid.num_neighbours(x, y) == 3:
+                    print("what is happening here? {}{} when num_nei = {}".format(
+                        x, y, curr_grid.num_neighbours(x, y)))
+                    self.birth_cell(x, y)
+                elif curr_grid.is_alive(x, y) and curr_grid.num_neighbours(x, y) < 2:
+                    self.kill_cell(x, y)
+                # elif A.is_alive(x, y) and A.num_neighbours(x, y) == (2, 3):
+                #     pass
+                elif curr_grid.is_alive(x, y) and curr_grid.num_neighbours(x, y) > 3:
+                    self.kill_cell(x, y)
+                else:
+                    pass
