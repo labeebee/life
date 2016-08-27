@@ -75,12 +75,10 @@ def test_apply_rules():
     A = grid.Grid()
     ip = [[0,0,0], [1,1,1], [1,0,0]]
     A.create_grid(ip)
-    print (A.life_grid)
-    print ("the number of neighbours is {}".format(A.num_neighbours(2, 1)))
-   # assert A.is_alive (2, 1) == False
-    print(grid.apply_rules(A))
+    
+    print(A.apply_rules())
     #print (A.life_grid[2][1])
     #print (A.life_grid[1][2])
-    assert A.is_alive(0, 1) == True
-    assert A.is_alive(1, 2) == False
+    assert A.is_alive(0, 1) is True
+    assert A.is_alive(1, 2) is False
     
