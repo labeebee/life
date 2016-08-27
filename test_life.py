@@ -81,4 +81,12 @@ def test_apply_rules():
     #print (A.life_grid[1][2])
     assert A.is_alive(0, 1) is True
     assert A.is_alive(1, 2) is False
+
+def test_printme():
+    A = grid.Grid()
+    ip = [[0,0,0], [1,1,1], [1,0,0]]
+    A.create_grid(ip)
+    count = 1
+    A.printme()
+    
     
