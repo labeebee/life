@@ -87,6 +87,6 @@ def test_printme():
     ip = [[0,0,0], [1,1,1], [1,0,0]]
     A.create_grid(ip)
     count = 1
-    A.printme()
+    print(A.printme())
     
     

@@ -5,7 +5,7 @@ class Grid:
     life_grid = None
 
     def create_grid(self, ip):
-        # global life_grid
+
         self.life_grid = copy.deepcopy(ip) # this is used so as to make a copy of the grid
 
     def is_alive(self, x, y):
@@ -51,16 +51,15 @@ class Grid:
     def apply_rules(self):
         temp_grid = Grid()
         temp_grid.create_grid(self.life_grid)
-        print(temp_grid.life_grid)
+        # print(temp_grid.life_grid)
 
         # since we are not actually accessing the values but the indices, I am
         # merely iterating using the position indices and not the grid as such.
         for x in range(0, temp_grid.size()):  # x would vary from 0 to A.size() - 1
             for y in range(0, temp_grid.size()):  # y would vary from 0 to A.size() - 1
-                print(x, y)
+                # print(x, y)
                 if not temp_grid.is_alive(x, y) and temp_grid.num_neighbours(x, y) == 3:
-                    print("what is happening here at ({},{}) when num_nei = {}?".format(
-                        x, y, temp_grid.num_neighbours(x, y)))
+                 
                     self.birth_cell(x, y)
                 elif temp_grid.is_alive(x, y) and temp_grid.num_neighbours(x, y) < 2:
                     self.kill_cell(x, y)
@@ -72,5 +71,22 @@ class Grid:
                     pass
 
 
-    # def printme(self):
-        
+    def printme(self):
+        count = 1
+        while count < 20:
+            print ("-"*20)
+            print (count)
+            for row in self.life_grid:
+                for column in row:
+                    if column == 1:
+                        print (" * ", end = " ")
+                    else:
+                        print (" . ", end = " ")
+                print ('\n')
+            self.apply_rules()
+            count += 1
+            input ()
+            
+                  
+                 
+             
