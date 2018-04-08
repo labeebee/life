@@ -1,12 +1,12 @@
 import copy
 
+
 class Grid:
-    
     life_grid = None
 
     def create_grid(self, ip):
 
-        self.life_grid = copy.deepcopy(ip) # this is used so as to make a copy of the grid
+        self.life_grid = copy.deepcopy(ip)  # this is used so as to make a copy of the grid
 
     def is_alive(self, x, y):
         global life_grid
@@ -14,15 +14,15 @@ class Grid:
             return True
         else:
             return False
-        
+
     def num_neighbours(self, x, y):
         ncount = 0
-        for xn in [x-1, x, x+1]:
-            for yn in [y-1, y, y+1]:
+        for xn in [x - 1, x, x + 1]:
+            for yn in [y - 1, y, y + 1]:
                 if (xn < 0 or
-                    yn < 0 or
-                    xn >= len(self.life_grid) or
-                    yn >= len(self.life_grid)):
+                        yn < 0 or
+                        xn >= len(self.life_grid) or
+                        yn >= len(self.life_grid)):
                     pass
                 elif xn == x and yn == y:
                     pass
@@ -31,22 +31,22 @@ class Grid:
         return ncount
 
     def kill_cell(self, x, y):
-        self.life_grid[x][y] = 0 # assigns 0 to the cell being addressed
+        self.life_grid[x][y] = 0  # assigns 0 to the cell being addressed
         # Yes! Literally kills the cell
 
-    def birth_cell(self, x, y): 
-        self.life_grid[x][y] = 1 # assigns 1 to the cell being addressed
+    def birth_cell(self, x, y):
+        self.life_grid[x][y] = 1  # assigns 1 to the cell being addressed
         # the cell lives
 
-    def size(self): # returns the size of the grid
+    def size(self):  # returns the size of the grid
         # assuming that we are using a square grid, we will have the length of
         # one side returned by this function
         return len(self.life_grid)
 
-    def grid_as_array(self): 
+    def grid_as_array(self):
         return self.life_grid
 
-#Layer 1
+    # Layer 1
 
     def apply_rules(self):
         temp_grid = Grid()
@@ -59,7 +59,7 @@ class Grid:
             for y in range(0, temp_grid.size()):  # y would vary from 0 to A.size() - 1
                 # print(x, y)
                 if not temp_grid.is_alive(x, y) and temp_grid.num_neighbours(x, y) == 3:
-                 
+
                     self.birth_cell(x, y)
                 elif temp_grid.is_alive(x, y) and temp_grid.num_neighbours(x, y) < 2:
                     self.kill_cell(x, y)
@@ -70,23 +70,18 @@ class Grid:
                 else:
                     pass
 
-
     def printme(self):
         count = 1
         while count < 20:
-            print ("-"*20)
-            print (count)
+            print("-" * 20)
+            print(count)
             for row in self.life_grid:
                 for column in row:
                     if column == 1:
-                        print (" * ", end = " ")
+                        print(" * ", end=" ")
                     else:
-                        print (" . ", end = " ")
-                print ('\n')
+                        print(" . ", end=" ")
+                print('\n')
             self.apply_rules()
             count += 1
-            input ()
-            
-                  
-                 
-             
+            input()
