@@ -3,3 +3,4 @@
 
 # Python and Test Leftovers
 __pycache__
+.cache/
